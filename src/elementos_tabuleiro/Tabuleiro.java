@@ -37,4 +37,9 @@ public class Tabuleiro {
 		// Nesse método, vamos retornar a peça que se encontra naquela posição do tabuleiro recebendo a posição específica do tabuleiro.
 	}
 	
+	public void colocarPeça(Peça peca, Posição posicao) {
+		pecas[posicao.getLinha()][posicao.getColuna()] = peca;
+		peca.posicao = posicao;
+	}
+	
 }

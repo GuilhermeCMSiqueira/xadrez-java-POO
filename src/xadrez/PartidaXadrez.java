@@ -2,6 +2,7 @@ package xadrez;
 
 import elementos_tabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
+import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
 	private Tabuleiro tabuleiro;
@@ -27,7 +28,19 @@ public class PartidaXadrez {
 	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
 	
 	private void setupInicial(){
-		colocarNovaPeça('e', 1, new Rei(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('e', 8, new Rei(tabuleiro, Cor.PRETO));
+
+		colocarNovaPeça('c', 1, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('c', 2, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('d', 2, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('e', 2, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('e', 1, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('d', 1, new Rei(tabuleiro, Cor.BRANCO));
+
+		colocarNovaPeça('c', 7, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('c', 8, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('d', 7, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('e', 7, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('e', 8, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('d', 8, new Rei(tabuleiro, Cor.PRETO));
 	}
 }

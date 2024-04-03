@@ -1,6 +1,5 @@
 package xadrez;
 
-import elementos_tabuleiro.Posição;
 import elementos_tabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
 
@@ -23,8 +22,12 @@ public class PartidaXadrez {
 		return matriz;
 	}
 	
+	private void colocarNovaPeça(char coluna, int linha, PeçaXadrez peca) {
+		tabuleiro.colocarPeça(peca, new PosiçaoXadrez(coluna, linha).converterPosicao());
+	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
+	
 	private void setupInicial(){
-		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.BRANCO), new Posição(0, 4));
-		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.PRETO), new Posição(7, 4));
+		colocarNovaPeça('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('e', 8, new Rei(tabuleiro, Cor.PRETO));
 	}
 }

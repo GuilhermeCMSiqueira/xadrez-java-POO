@@ -9,6 +9,7 @@ public class PartidaXadrez {
 	
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8,8);
+		setupInicial();
 	}
 	
 	public PeçaXadrez[][] verPeças(){
@@ -22,8 +23,8 @@ public class PartidaXadrez {
 		return matriz;
 	}
 	
-	public void setupInicial(){
+	private void setupInicial(){
 		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.BRANCO), new Posição(0, 4));
-		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.BRANCO), new Posição(7, 4));
+		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.PRETO), new Posição(7, 4));
 	}
 }

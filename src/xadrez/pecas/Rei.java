@@ -15,4 +15,10 @@ public class Rei extends PeçaXadrez{
 		return "K";
 		// Vamos utilizar o toString pra imprimir o tabuleiro
 	}
+
+	@Override
+	public boolean[][] movimentosPossiveis() {
+		boolean[][] mat = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
+		return mat;
+	}
 }

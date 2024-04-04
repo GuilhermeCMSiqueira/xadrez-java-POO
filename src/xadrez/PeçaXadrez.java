@@ -3,7 +3,7 @@ package xadrez;
 import elementos_tabuleiro.Peça;
 import elementos_tabuleiro.Tabuleiro;
 
-public class PeçaXadrez extends Peça{
+public abstract class PeçaXadrez extends Peça{
 	private Cor cor;
 
 	public PeçaXadrez(Tabuleiro tabuleiro, Cor cor) {

@@ -1,6 +1,6 @@
 package elementos_tabuleiro;
 
-public class Peça {
+public abstract class Peça {
 	protected Posição posicao;
 	private Tabuleiro tabuleiro;
 	
@@ -15,7 +15,26 @@ public class Peça {
 		return tabuleiro;
 	}
 
+	public abstract boolean[][] movimentosPossiveis();
+	
+	public boolean movimentoPossivel(Posição posicao) {
+		return movimentosPossiveis()[posicao.getLinha()][posicao.getColuna()];
+	}
+	
+	public boolean qualquerMovimentoPossivel() {
+		boolean[][] mat = movimentosPossiveis();
+		for (int i = 0; i<mat.length; i++) {
+			for (int j = 0; j<mat.length; j++) {
+				if (mat[i][j]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	
+	}
 	
-}
+	
+

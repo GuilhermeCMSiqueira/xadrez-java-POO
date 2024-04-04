@@ -1,5 +1,7 @@
 package xadrez;
 
+import elementos_tabuleiro.Peça;
+import elementos_tabuleiro.Posição;
 import elementos_tabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
@@ -23,9 +25,35 @@ public class PartidaXadrez {
 		return matriz;
 	}
 	
+	
+	public PeçaXadrez fazerMovimentoXadrez (PosiçaoXadrez origemP, PosiçaoXadrez fimP) {
+		// vamos converter os argumentos da função para a linguagem de tabuleiro
+		Posição origem = origemP.converterPosicao();
+		Posição fim = fimP.converterPosicao();
+		validarPosiçaoInicial(origem);
+		Peça pecaCapturada = fazerMovimento(origem, fim);
+		return (PeçaXadrez)pecaCapturada;
+		
+	}
+	
+	private void validarPosiçaoInicial(Posição posicao) {
+		if (!tabuleiro.peçaExiste(posicao)) {
+			throw new ExceçaoXadrez("Não existe peça na posição de origem");
+		}
+	}
+	
+	private Peça fazerMovimento(Posição origem, Posição fim) {
+		Peça p = tabuleiro.removerPeça(origem);
+		Peça pecaCapturada = tabuleiro.removerPeça(fim);
+		tabuleiro.colocarPeça(p, fim);
+		return pecaCapturada;
+	}
+	
+	
 	private void colocarNovaPeça(char coluna, int linha, PeçaXadrez peca) {
 		tabuleiro.colocarPeça(peca, new PosiçaoXadrez(coluna, linha).converterPosicao());
 	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
+	
 	
 	private void setupInicial(){
 
@@ -43,4 +71,6 @@ public class PartidaXadrez {
 		colocarNovaPeça('e', 8, new Torre(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('d', 8, new Rei(tabuleiro, Cor.PRETO));
 	}
+	
+	
 }

@@ -1,7 +1,11 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.Cor;
 import xadrez.PeçaXadrez;
+import xadrez.PosiçaoXadrez;
 
 public class Visual {
 	
@@ -52,6 +56,17 @@ public class Visual {
             }
 		}
 		System.out.print(' ');
+	}
+	
+	public static PosiçaoXadrez lerPosiçaoXadrez(Scanner sc) {
+		try {
+			String s = sc.nextLine();
+			char coluna = s.charAt(0);
+			int linha = Integer.parseInt(s.substring(1));
+			return new PosiçaoXadrez(coluna, linha);
+		}catch(RuntimeException e){
+			throw new InputMismatchException("Erro lendo a posição.");
+		}
 	}
 	
 }

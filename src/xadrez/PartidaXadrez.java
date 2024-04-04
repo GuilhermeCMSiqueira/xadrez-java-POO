@@ -38,7 +38,7 @@ public class PartidaXadrez {
 	
 	private void validarPosiçaoInicial(Posição posicao) {
 		if (!tabuleiro.peçaExiste(posicao)) {
-			throw new ExceçaoXadrez("Não existe peça na posição de origem");
+			throw new ExceçaoXadrez("Não existe peça na posição de origem.");
 		}
 	}
 	

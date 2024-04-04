@@ -2,6 +2,7 @@ package application;
 
 import java.util.Scanner;
 
+import xadrez.ExceçaoXadrez;
 import xadrez.PartidaXadrez;
 import xadrez.PeçaXadrez;
 import xadrez.PosiçaoXadrez;
@@ -14,18 +15,25 @@ public class Program {
 		PartidaXadrez partida = new PartidaXadrez();
 		
 		while(true) {
-			Visual.printTabuleiro(partida.verPeças());
-			System.out.println();
-			System.out.println("Origem: ");
-			PosiçaoXadrez origem = Visual.lerPosiçaoXadrez(sc);
-			
-			System.out.println();
-			System.out.println("Fim do movimento: ");
-			PosiçaoXadrez fim = Visual.lerPosiçaoXadrez(sc);
-			
-			PeçaXadrez pecaCapturada = partida.fazerMovimentoXadrez(origem, fim);
+			try {
+				Visual.limparTela();
+				Visual.printTabuleiro(partida.verPeças());
+				System.out.println();
+				System.out.println("Origem: ");
+				PosiçaoXadrez origem = Visual.lerPosiçaoXadrez(sc);
+				
+				System.out.println();
+				System.out.println("Fim do movimento: ");
+				PosiçaoXadrez fim = Visual.lerPosiçaoXadrez(sc);
+				
+				PeçaXadrez pecaCapturada = partida.fazerMovimentoXadrez(origem, fim);
+			}
+			catch (ExceçaoXadrez e){
+				System.out.println(e.getMessage());
+				sc.nextLine();			}
+			}
 		}
 		
 	}
 
-}
+

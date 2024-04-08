@@ -31,6 +31,7 @@ public class PartidaXadrez {
 		Posição origem = origemP.converterPosicao();
 		Posição fim = fimP.converterPosicao();
 		validarPosiçaoInicial(origem);
+		validarPosiçaoFinal(origem, fim);
 		Peça pecaCapturada = fazerMovimento(origem, fim);
 		return (PeçaXadrez)pecaCapturada;
 		
@@ -45,6 +46,13 @@ public class PartidaXadrez {
 		}
 	}
 	
+	public void validarPosiçaoFinal(Posição origem, Posição fim) {
+		if (!tabuleiro.peca(origem).movimentoPossivel(fim)) {
+			throw new ExceçaoXadrez("A peça escolhida não pode se mover para esse local.");
+		}
+	}
+	
+	
 	private Peça fazerMovimento(Posição origem, Posição fim) {
 		Peça p = tabuleiro.removerPeça(origem);
 		Peça pecaCapturada = tabuleiro.removerPeça(fim);
@@ -56,6 +64,7 @@ public class PartidaXadrez {
 	private void colocarNovaPeça(char coluna, int linha, PeçaXadrez peca) {
 		tabuleiro.colocarPeça(peca, new PosiçaoXadrez(coluna, linha).converterPosicao());
 	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
+	
 	
 	
 	private void setupInicial(){

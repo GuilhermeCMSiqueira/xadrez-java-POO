@@ -27,6 +27,14 @@ public class Posição {
 	public int getColuna() {
 		return coluna;
 	}
+	
+	public void setLinha(int linha) {
+		this.linha = linha;
+	}
 
+	public void setValores(int linha, int coluna) {
+		this.linha = linha;
+		this.coluna = coluna;
+	}
 
 }

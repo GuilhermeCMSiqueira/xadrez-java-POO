@@ -88,10 +88,17 @@ public class Visual {
 		printPeçasCapturadas(capturados);
 		System.out.println();
 		System.out.println("Turno: " + partida.getTurno());
-		System.out.println("Esperando jogador: " + partida.getJogadorAtual());
-		if (partida.getCheck()) {
-			System.out.println("CHECK!!");
+		if (!partida.getCheckmate()) {
+			System.out.println("Esperando jogador: " + partida.getJogadorAtual());
+			if (partida.getCheck()) {
+				System.out.println("CHECK!!");
+			}
 		}
+		else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Vencedor: " + partida.getJogadorAtual());
+		}
+		
 	}
 	
 	

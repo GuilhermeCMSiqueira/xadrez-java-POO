@@ -16,6 +16,7 @@ public class PartidaXadrez {
 	private Cor jogadorAtual;
 	private Tabuleiro tabuleiro;
 	private boolean check;
+	private boolean checkmate;
 	
 	private List<Peça> peçasTabuleiro = new ArrayList<>();
 	private List<Peça> peçasCapturadas = new ArrayList<>();
@@ -37,6 +38,10 @@ public class PartidaXadrez {
 	
 	public boolean getCheck() {
 		return check;
+	}
+	
+	public boolean getCheckmate() {
+		return checkmate;
 	}
 
 	public PeçaXadrez[][] verPeças(){
@@ -73,7 +78,13 @@ public class PartidaXadrez {
 		// Operador condicional ternário:
 		check = (testeCheck(oponente(jogadorAtual))) ? true : false;
 		
-		proximoTurno();
+		if (testeCheckmate(oponente(jogadorAtual))) {
+			checkmate = true;
+		}
+		else {
+			proximoTurno();
+		}
+		
 		return (PeçaXadrez)pecaCapturada;
 	}
 	
@@ -166,23 +177,40 @@ public class PartidaXadrez {
 		return false;
 	}
 	
+	private boolean testeCheckmate(Cor cor) {
+		if (!testeCheck(cor)) {
+			return false;
+		}
+		List<Peça> lista = peçasTabuleiro.stream().filter(x -> ((PeçaXadrez)x).getCor() == cor).collect(Collectors.toList());
+		for (Peça p: lista) {
+			boolean[][] mat = p.movimentosPossiveis();
+			for (int i = 0; i < tabuleiro.getLinhas(); i++) {
+				for (int j = 0; j < tabuleiro.getColunas(); j++) {
+					if (mat[i][j]) {
+						Posição origem = ((PeçaXadrez)p).getPosiçaoXadrez().converterPosicao();
+						Posição fim = new Posição(i, j);
+						Peça pecaCapturada = fazerMovimento(origem, fim);
+						boolean testeCheck = testeCheck(cor);
+						desfazerMovimento(origem, fim, pecaCapturada);
+						if(!testeCheck) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
 	
 	
 	private void setupInicial(){
 
-		colocarNovaPeça('c', 1, new Torre(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('c', 2, new Torre(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('d', 2, new Torre(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('e', 2, new Torre(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('e', 1, new Torre(tabuleiro, Cor.BRANCO));
-		colocarNovaPeça('d', 1, new Rei(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('h', 7, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('d', 1, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('e', 1, new Rei(tabuleiro, Cor.BRANCO));
 
-		colocarNovaPeça('c', 7, new Torre(tabuleiro, Cor.PRETO));
-		colocarNovaPeça('c', 8, new Torre(tabuleiro, Cor.PRETO));
-		colocarNovaPeça('d', 7, new Torre(tabuleiro, Cor.PRETO));
-		colocarNovaPeça('e', 7, new Torre(tabuleiro, Cor.PRETO));
-		colocarNovaPeça('e', 8, new Torre(tabuleiro, Cor.PRETO));
-		colocarNovaPeça('d', 8, new Rei(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('b', 8, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('a', 8, new Rei(tabuleiro, Cor.PRETO));
 	}
 	
 	

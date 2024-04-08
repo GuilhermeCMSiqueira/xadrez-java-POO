@@ -29,7 +29,7 @@ public class PosiçaoXadrez {
 	}
 
 	protected static PosiçaoXadrez conversaoInversa(Posição posicao) {
-		return new PosiçaoXadrez((char)('a' - posicao.getColuna()), 8 - posicao.getLinha());
+		return new PosiçaoXadrez((char)('a' + posicao.getColuna()), 8 - posicao.getLinha());
 	}
 	
 	@Override

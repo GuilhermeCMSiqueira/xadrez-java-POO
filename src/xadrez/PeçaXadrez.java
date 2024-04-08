@@ -23,4 +23,8 @@ public abstract class PeçaXadrez extends Peça{
 		return p != null && p.getCor() != cor;
 	}
 	
+	public PosiçaoXadrez getPosiçaoXadrez() {
+		return PosiçaoXadrez.conversaoInversa(posicao);
+	}
+	
 }

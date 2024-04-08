@@ -7,13 +7,26 @@ import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
+	
+	private int turno;
+	private Cor jogadorAtual;
 	private Tabuleiro tabuleiro;
 	
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8,8);
+		turno = 1;
+		jogadorAtual = Cor.BRANCO;
 		setupInicial();
 	}
 	
+	public int getTurno() {
+		return turno;
+	}
+
+	public Cor getJogadorAtual() {
+		return jogadorAtual;
+	}
+
 	public PeçaXadrez[][] verPeças(){
 		PeçaXadrez[][] matriz = new PeçaXadrez[tabuleiro.getLinhas()][tabuleiro.getColunas()];
 		for (int i = 0; i<tabuleiro.getLinhas(); i++) {
@@ -38,6 +51,7 @@ public class PartidaXadrez {
 		validarPosiçaoInicial(origem);
 		validarPosiçaoFinal(origem, fim);
 		Peça pecaCapturada = fazerMovimento(origem, fim);
+		proximoTurno();
 		return (PeçaXadrez)pecaCapturada;
 		
 	}
@@ -45,6 +59,9 @@ public class PartidaXadrez {
 	private void validarPosiçaoInicial(Posição posicao) {
 		if (!tabuleiro.peçaExiste(posicao)) {
 			throw new ExceçaoXadrez("Não existe peça na posição de origem.");
+		}
+		if(jogadorAtual != ((PeçaXadrez)tabuleiro.peca(posicao)).getCor()) {
+			throw new ExceçaoXadrez("Essa peça não corresponde a sua cor.");
 		}
 		if(!tabuleiro.peca(posicao).qualquerMovimentoPossivel()) {
 			throw new ExceçaoXadrez("Não existe movimentos possíveis para a peça escolhida.");
@@ -70,6 +87,15 @@ public class PartidaXadrez {
 		tabuleiro.colocarPeça(peca, new PosiçaoXadrez(coluna, linha).converterPosicao());
 	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
 	
+	private void proximoTurno() {
+		turno++;
+		if (jogadorAtual == Cor.BRANCO) {
+			jogadorAtual = Cor.PRETO;
+		}
+		else {
+			jogadorAtual = Cor.BRANCO;
+		}
+	}
 	
 	
 	private void setupInicial(){

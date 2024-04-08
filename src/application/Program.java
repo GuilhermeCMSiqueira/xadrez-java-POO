@@ -17,7 +17,7 @@ public class Program {
 		while(true) {
 			try {
 				Visual.limparTela();
-				Visual.printTabuleiro(partida.verPeças());
+				Visual.printPartida(partida);
 				System.out.println();
 				System.out.println("Origem: ");
 				PosiçaoXadrez origem = Visual.lerPosiçaoXadrez(sc);

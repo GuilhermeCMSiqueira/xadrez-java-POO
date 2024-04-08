@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import xadrez.Cor;
+import xadrez.PartidaXadrez;
 import xadrez.PeçaXadrez;
 import xadrez.PosiçaoXadrez;
 
@@ -77,6 +78,14 @@ public class Visual {
 		}
 		System.out.print(' ');
 	}
+	
+	public static void printPartida(PartidaXadrez partida) {
+		printTabuleiro(partida.verPeças());
+		System.out.println();
+		System.out.println("Turno: " + partida.getTurno());
+		System.out.println("Esperando jogador: " + partida.getJogadorAtual());
+	}
+	
 	
 	public static PosiçaoXadrez lerPosiçaoXadrez(Scanner sc) {
 		try {

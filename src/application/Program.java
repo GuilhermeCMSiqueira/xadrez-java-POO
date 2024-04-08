@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import xadrez.ExceçaoXadrez;
@@ -13,11 +15,12 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		PartidaXadrez partida = new PartidaXadrez();
+		List<PeçaXadrez> capturados = new ArrayList<>();
 		
 		while(true) {
 			try {
 				Visual.limparTela();
-				Visual.printPartida(partida);
+				Visual.printPartida(partida, capturados);
 				System.out.println();
 				System.out.println("Origem: ");
 				PosiçaoXadrez origem = Visual.lerPosiçaoXadrez(sc);
@@ -31,6 +34,10 @@ public class Program {
 				PosiçaoXadrez fim = Visual.lerPosiçaoXadrez(sc);
 				
 				PeçaXadrez pecaCapturada = partida.fazerMovimentoXadrez(origem, fim);
+				
+				if (pecaCapturada != null) {
+					capturados.add(pecaCapturada);
+				}
 			}
 			catch (ExceçaoXadrez e){
 				System.out.println(e.getMessage());

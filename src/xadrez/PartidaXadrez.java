@@ -1,5 +1,8 @@
 package xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import elementos_tabuleiro.Peça;
 import elementos_tabuleiro.Posição;
 import elementos_tabuleiro.Tabuleiro;
@@ -11,6 +14,9 @@ public class PartidaXadrez {
 	private int turno;
 	private Cor jogadorAtual;
 	private Tabuleiro tabuleiro;
+	
+	private List<Peça> peçasTabuleiro = new ArrayList<>();
+	private List<Peça> peçasCapturadas = new ArrayList<>();
 	
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8,8);
@@ -79,12 +85,18 @@ public class PartidaXadrez {
 		Peça p = tabuleiro.removerPeça(origem);
 		Peça pecaCapturada = tabuleiro.removerPeça(fim);
 		tabuleiro.colocarPeça(p, fim);
+		
+		if (pecaCapturada != null) {
+			peçasTabuleiro.remove(pecaCapturada);
+			peçasCapturadas.add(pecaCapturada);
+		}
 		return pecaCapturada;
 	}
 	
 	
 	private void colocarNovaPeça(char coluna, int linha, PeçaXadrez peca) {
 		tabuleiro.colocarPeça(peca, new PosiçaoXadrez(coluna, linha).converterPosicao());
+		peçasTabuleiro.add(peca);
 	} // Método utilizado para colocarmos as peças no tabuleiro utilizando coordenadas de xadrez e não numeros
 	
 	private void proximoTurno() {

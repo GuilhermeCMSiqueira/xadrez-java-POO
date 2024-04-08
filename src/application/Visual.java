@@ -39,7 +39,7 @@ public class Visual {
 		for (int i = 0; i<pecas.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j< pecas.length; j++) {
-				printPeça(pecas[i][j]);
+				printPeça(pecas[i][j], false);
 			}
 			System.out.println();
 		}
@@ -47,10 +47,25 @@ public class Visual {
 	}
 	
 	
+	public static void printTabuleiro(PeçaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
+		for (int i = 0; i<pecas.length; i++) {
+			System.out.print((8 - i) + " ");
+			for (int j = 0; j< pecas.length; j++) {
+				printPeça(pecas[i][j], movimentosPossiveis[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+	}
+	
 	// Vamos criar um metodo pra imprimir uma única peça e usar ele no desenvolvimento da impressão do tabuleiro inteiro
-	private static void printPeça(PeçaXadrez peca) {
+	private static void printPeça(PeçaXadrez peca, boolean colorir) {
+		if(colorir) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
+		
 		if (peca == null) {
-			System.out.print('-');
+			System.out.print('-' + ANSI_RESET);
 		}else {
 			if (peca.getCor() == Cor.BRANCO) {
                 System.out.print(ANSI_WHITE + peca + ANSI_RESET);

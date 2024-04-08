@@ -22,6 +22,10 @@ public class Program {
 				System.out.println("Origem: ");
 				PosiçaoXadrez origem = Visual.lerPosiçaoXadrez(sc);
 				
+				boolean[][] movimentosPossiveis = partida.movimentosPossiveis(origem);
+				Visual.limparTela();
+				Visual.printTabuleiro(partida.verPeças(), movimentosPossiveis);
+				
 				System.out.println();
 				System.out.println("Fim do movimento: ");
 				PosiçaoXadrez fim = Visual.lerPosiçaoXadrez(sc);

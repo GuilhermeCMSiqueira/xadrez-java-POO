@@ -25,6 +25,11 @@ public class PartidaXadrez {
 		return matriz;
 	}
 	
+	public boolean[][] movimentosPossiveis(PosiçaoXadrez origem){
+		Posição posicao = origem.converterPosicao();
+		validarPosiçaoInicial(posicao);
+		return tabuleiro.peca(posicao).movimentosPossiveis();
+		}
 	
 	public PeçaXadrez fazerMovimentoXadrez (PosiçaoXadrez origemP, PosiçaoXadrez fimP) {
 		// vamos converter os argumentos da função para a linguagem de tabuleiro

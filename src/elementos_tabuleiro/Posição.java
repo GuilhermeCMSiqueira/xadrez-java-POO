@@ -37,4 +37,8 @@ public class Posição {
 		this.coluna = coluna;
 	}
 
+	public void setColuna(int coluna) {
+		this.coluna = coluna;
+	}
+
 }

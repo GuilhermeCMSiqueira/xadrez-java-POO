@@ -6,6 +6,7 @@ import elementos_tabuleiro.Tabuleiro;
 
 public abstract class PeçaXadrez extends Peça{
 	private Cor cor;
+	private int contadorMovimentos;
 
 	public PeçaXadrez(Tabuleiro tabuleiro, Cor cor) {
 		// Nesse caso, no nosso construtor, temos a utilzação do construtor da nossa superclasse (Peça)
@@ -16,6 +17,18 @@ public abstract class PeçaXadrez extends Peça{
 
 	public Cor getCor() {
 		return cor;
+	}
+	
+	public int getContadorMovimentos() {
+		return contadorMovimentos;
+	}
+	
+	public void aumentarMovimentos() {
+		contadorMovimentos++;
+	}
+	
+	public void diminuirMovimentos() {
+		contadorMovimentos--;
 	}
 	
 	protected boolean temPeçaOponente(Posição posicao) {

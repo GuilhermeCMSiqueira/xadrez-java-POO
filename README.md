@@ -2,7 +2,7 @@
 
 Nesse projeto, criei um sistema de xadrez utilizando a linguagem Java, o desenvolvimento do meu código se deu através de 4 pacotes (application, elementos_tabuleiro, xadrez, xadrez.peças) nos quais eu criei diversas classes que podem ser observadas nesse repositório. 
 
-##Conceitos utilizados no projeto:
+## Conceitos utilizados no projeto:
 
 - Estruturas condicionais
 - Estruturas repetitivas
@@ -19,7 +19,7 @@ Nesse projeto, criei um sistema de xadrez utilizando a linguagem Java, o desenvo
 - Construtores
 - Getters e Setters
 
-##Passo a passo do desenvolvimento:
+## Passo a passo do desenvolvimento:
 
 0) Criamos a classe Program do programa principal no pacote application.
 1) Criação da Classe Posição utilizando os conceitos de encapsulamento (os atributos da classe são privados), Construtores (que serão utilizados na instanciação de todos os objetos de cada classe) e o método toString (utiliza o conceito de sobreposição, em que você sobrescreve o método toString da classe Object).

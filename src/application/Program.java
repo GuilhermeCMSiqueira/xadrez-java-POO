@@ -38,6 +38,12 @@ public class Program {
 				if (pecaCapturada != null) {
 					capturados.add(pecaCapturada);
 				}
+				
+				if (partida.getPromovido() != null) {
+					System.out.print("Digite a letra da peça que você deseja evoluir [B/C/Q/T]: ");
+					String tipo = sc.nextLine();
+					partida.substituirPeçaPromovida(tipo);
+				}
 			}
 			catch (ExceçaoXadrez e){
 				System.out.println(e.getMessage());

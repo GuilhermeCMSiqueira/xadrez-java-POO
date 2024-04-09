@@ -41,7 +41,11 @@ public class Program {
 				
 				if (partida.getPromovido() != null) {
 					System.out.print("Digite a letra da peça que você deseja evoluir [B/C/Q/T]: ");
-					String tipo = sc.nextLine();
+					String tipo = sc.nextLine().toUpperCase();
+					while (!tipo.equals("B") && !tipo.equals("Q") && !tipo.equals("C") && !tipo.equals("T")) {
+						System.out.print("Valor inválido. Digite a letra da peça que você deseja evoluir [B/C/Q/T]: ");
+						tipo = sc.nextLine().toUpperCase();
+					}
 					partida.substituirPeçaPromovida(tipo);
 				}
 			}

@@ -46,3 +46,8 @@ pelos jogadores. Além disso, vamos separar em 2 listas as peças que ainda est�
 20) Criação de uma propriedade para contar o número de movimentos de cada peça, atributo que vai ser utilizado mais a frente (ex: primeiro movimento do peão).
 21) Desenvolvimento das peças restantes (Peão, Bispo, Rainha e Cavalo) utilizando os conceitos de herança, polimorfismo, encapsulamente, etc. Junto a isso, vamos atualizando o setup inicial de nosso tabuleiro.
 22) Adição de jogadas especiais ao sistema (Roque, En passant e Promoção).
+
+
+## Capturas de Tela durante o desenvolvimento do projeto:
+
+![Evolução Projeto-Xadrez-Java](https://github.com/GuilhermeCMSiqueira/xadrez-java-POO/assets/136330816/d6738959-5996-436c-b87f-4b9831252be8)

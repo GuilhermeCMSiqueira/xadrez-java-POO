@@ -64,4 +64,4 @@ A criação das classes de peças foi expandida para incluir a Rainha, Cavalo, B
 
 - Além disso, o uso de exceções foi importante para garantir que o sistema fosse robusto e capaz de lidar com entradas inválidas ou estados inesperados durante a partida. O desenvolvimento também exigiu uma boa organização do código, onde a lógica de movimentação, verificação de xeque e mate, além das jogadas especiais, foram devidamente distribuídas entre as classes para manter a clareza e o controle do fluxo do jogo.
 
--Por fim, esse projeto reforçou a importância de seguir os princípios de POO para construir soluções escaláveis e reutilizáveis, além de aprimorar minha habilidade de pensar em termos de objetos e interações em sistemas mais complexos.
+- Por fim, esse projeto reforçou a importância de seguir os princípios de POO para construir soluções escaláveis e reutilizáveis, além de aprimorar minha habilidade de pensar em termos de objetos e interações em sistemas mais complexos.
